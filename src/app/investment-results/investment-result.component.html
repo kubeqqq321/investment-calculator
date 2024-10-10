@@ -1,0 +1,30 @@
+<!--if oraz for z nawiasami służą do obsługi signals-->
+@if (!results()) {
+  <!--@if (!results) {-->
+  <p class="center">Enter some values and press "Calculate"</p>
+} @else {
+  <table>
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Year</th>
+      <th scope="col">Investment Value</th>
+      <th scope="col">Interest(Year)</th>
+      <th scope="col">Total Interest</th>
+      <th scope="col">Invested Capital</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (result of results(); track result.year) {
+        <!--      @for (result of results; track result.year) {-->
+        <tr>
+          <td>{{ result.year }}</td>
+          <td>{{ result.valueEndOfYear | currency }}</td>
+          <td>{{ result.interest | currency }}</td>
+          <td>{{ result.totalInterest | currency }}</td>
+          <td>{{ result.annualInvestment | currency }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
+
